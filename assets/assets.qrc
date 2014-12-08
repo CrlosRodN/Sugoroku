@@ -13,5 +13,6 @@
         <file>three.svg</file>
         <file>two.svg</file>
         <file>white.svg</file>
+        <file>board.svg</file>
     </qresource>
 </RCC>
