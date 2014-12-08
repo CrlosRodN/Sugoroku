@@ -1,28 +1,15 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2014-12-07T16:14:19
-#
-#-------------------------------------------------
-
-QT       += core gui
+TARGET = Sugoroku
+TEMPLATE = app
+QT += core gui widgets
+CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Sugoroku
-TEMPLATE = app
+SOURCES += source/main.cpp \
+SOURCES += source/MainWindow.cpp
 
+HEADERS += source/MainWindow.h
 
-SOURCES += main.cpp \
-    MainWindow.cpp \
-    source/main.cpp \
-    source/MainWindow.cpp
+FORMS += source/MainWindow.ui
 
-HEADERS  += \
-    MainWindow.h \
-    source/MainWindow.h
-
-FORMS    += \
-    MainWindow.ui
-
-RESOURCES += \
-    assets/assets.qrc
+RESOURCES += assets/assets.qrc
