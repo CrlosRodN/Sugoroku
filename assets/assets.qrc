@@ -1,1 +1,17 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/common">
+        <file>close.svg</file>
+        <file>dice.svg</file>
+        <file>new.svg</file>
+    </qresource>
+    <qresource prefix="/gameIcons">
+        <file>black.svg</file>
+        <file>five.svg</file>
+        <file>four.svg</file>
+        <file>one.svg</file>
+        <file>six.svg</file>
+        <file>three.svg</file>
+        <file>two.svg</file>
+        <file>white.svg</file>
+    </qresource>
+</RCC>
