@@ -28,9 +28,6 @@ class MainWindow : public QMainWindow
   protected slots:
 	/** Called when user asks for a new Trivia game **/
 	void actionNewTriggered();
-
-  private slots:
-    void on_actionClose_triggered();
 };
 
 #endif // MAINWINDOW_H
