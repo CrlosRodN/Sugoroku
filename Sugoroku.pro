@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
 QT += core gui widgets
 QT += svg
 
@@ -14,11 +14,11 @@ TARGET = Sugoroku
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        MainWindow.cpp
+SOURCES += source/main.cpp\
+        source/MainWindow.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += source/MainWindow.h
 
-FORMS    += MainWindow.ui
+FORMS    += source/MainWindow.ui
 
 RESOURCES += assets/assets.qrc
