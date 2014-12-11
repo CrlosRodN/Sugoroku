@@ -14,5 +14,8 @@
         <file>two.svg</file>
         <file>white.svg</file>
         <file>board.svg</file>
+        <file>center.svg</file>
+        <file>square.svg</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

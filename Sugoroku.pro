@@ -1,15 +1,24 @@
-TARGET = Sugoroku
-TEMPLATE = app
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-12-09T22:00:16
+#
+#-------------------------------------------------
+
+QT       += core gui
 QT += core gui widgets
-CONFIG += c++11
+QT += svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-SOURCES += source/main.cpp
-SOURCES += source/MainWindow.cpp
+TARGET = Sugoroku
+TEMPLATE = app
 
-HEADERS += source/MainWindow.h
 
-FORMS += source/MainWindow.ui
+SOURCES += main.cpp\
+        MainWindow.cpp
+
+HEADERS  += MainWindow.h
+
+FORMS    += MainWindow.ui
 
 RESOURCES += assets/assets.qrc
