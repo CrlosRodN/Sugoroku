@@ -15,16 +15,15 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Sugoroku
 TEMPLATE = app
 
+SOURCES += source/main.cpp \
+        source/MainWindow.cpp \
+        source/Sugoroku.cpp \
+        source/Token.cpp
 
-SOURCES += main.cpp\
-        MainWindow.cpp \
-    Sugoroku.cpp \
-    Token.cpp
+HEADERS  += source/MainWindow.h \
+        source/Sugoroku.h \
+        source/Token.h
 
-HEADERS  += MainWindow.h \
-    Sugoroku.h \
-    Token.h
-
-FORMS    += MainWindow.ui
+FORMS    += source/MainWindow.ui
 
 RESOURCES += assets/assets.qrc
