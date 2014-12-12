@@ -18,7 +18,10 @@ class Sugoroku : public virtual QApplication
     public:
         Sugoroku(int &argc, char *argv[]);
         ~Sugoroku();
+
         int play();
+        bool load_tokens();
+        bool display_tokens();
 };
 
 #endif // SUGOROKU_H

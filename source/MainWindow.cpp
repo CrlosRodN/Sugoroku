@@ -4,16 +4,17 @@
 #include <QSvgWidget>
 #include <vector>
 
-MainWindow::MainWindow(Sugoroku *sugoroku, QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow( Sugoroku *sugoroku, QWidget *parent )
+    : QMainWindow( parent )
+    , ui( new Ui::MainWindow )
     , sugoroku(sugoroku)
 {
-    ui->setupUi(this);
-    central = new QWidget(this);
-    setCentralWidget(central);
+    ui->setupUi( this );
+    central = new QWidget( this );
+    setCentralWidget( central );
+    load_spaces();
     load_layouts();
-    central->setLayout(layouts[0]);
+    central->setLayout( layouts[0] );
     central->show();
 }
 
@@ -27,19 +28,21 @@ void MainWindow::load_layouts()
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setSpacing(0);
     layout->setContentsMargins(0, 0, 0, 0);
-    QSvgWidget *tiles[12];
 
     for ( int i = 1; i < N; i++ )
     {
-        for ( int x = 0; x < 12; x++ )
-            tiles[x] = new QSvgWidget(":/gameIcons/square.svg");
 
         layouts[i] = new QHBoxLayout;
         layout->addLayout(layouts[i]);
 
-        if ( i % 2 == 1 )
+        if ( i == 1 )
             for ( int j = 0; j < 12; j++ )
-                layouts[i]->addWidget( tiles[j]);
+                layouts[i]->addWidget( whiteSpace[j]);
+
+        else if ( i ==  3)
+            for ( int j = 0; j < 12; j++ )
+                layouts[i]->addWidget( blackSpace[j]);
+
         else
         {
             QSvgWidget *tile = new QSvgWidget(":/gameIcons/center.svg");
@@ -48,3 +51,14 @@ void MainWindow::load_layouts()
     }
     layouts[0] = layout;
 }
+
+void MainWindow::load_spaces()
+{
+    for ( int x = 0; x < 12; x++ )
+    {
+        whiteSpace.push_back( new QSvgWidget( ":/gameIcons/square.svg" ) );
+        blackSpace.push_back( new QSvgWidget( ":/gameIcons/square.svg" ) );
+    }
+}
+
+

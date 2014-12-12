@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <QSvgWidget>
 
 class Sugoroku;
 
@@ -13,21 +14,23 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
     private:
-        static const int N = 4;
         Ui::MainWindow *ui;
-        QGraphicsScene scene;
         Sugoroku* sugoroku;
         QWidget * central;
-            //QGridLayout *gridLayout;
-            //QFrame * frames[N];
-        QLayout *layouts[N];
+
 
     public:
+        static const int N = 4;
+        QLayout *layouts[N];
+        QVector<QSvgWidget*> blackSpace;
+        QVector<QSvgWidget*> whiteSpace;
         explicit MainWindow( Sugoroku* sugogoku, QWidget *parent = 0 );
         ~MainWindow();
 
     protected:
         void load_layouts();
+        void load_spaces();
+
 
 };
 
