@@ -4,9 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
 QT += core gui widgets
 QT += svg
+
+QMAKE_CXXFLAGS += -std=c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,9 +17,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp
+        MainWindow.cpp \
+    Sugoroku.cpp \
+    Token.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += MainWindow.h \
+    Sugoroku.h \
+    Token.h
 
 FORMS    += MainWindow.ui
 

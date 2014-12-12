@@ -4,9 +4,10 @@
 #include <QSvgWidget>
 #include <vector>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(Sugoroku *sugoroku, QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+    , sugoroku(sugoroku)
 {
     ui->setupUi(this);
     central = new QWidget(this);

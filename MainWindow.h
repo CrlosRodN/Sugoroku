@@ -4,9 +4,9 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 
-namespace Ui {
-class MainWindow;
-}
+class Sugoroku;
+
+namespace Ui { class MainWindow; }
 
 class MainWindow : public QMainWindow
 {
@@ -16,13 +16,14 @@ class MainWindow : public QMainWindow
         static const int N = 4;
         Ui::MainWindow *ui;
         QGraphicsScene scene;
+        Sugoroku* sugoroku;
         QWidget * central;
             //QGridLayout *gridLayout;
             //QFrame * frames[N];
         QLayout *layouts[N];
 
     public:
-        explicit MainWindow(QWidget *parent = 0);
+        explicit MainWindow( Sugoroku* sugogoku, QWidget *parent = 0 );
         ~MainWindow();
 
     protected:
