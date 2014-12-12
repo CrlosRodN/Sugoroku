@@ -1,7 +1,7 @@
 #ifndef SUGOROKU_H
 #define SUGOROKU_H
 
-#include <Token.h>
+#include "Token.h"
 #include <QApplication>
 #include <QVector>
 
