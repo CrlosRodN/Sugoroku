@@ -26,6 +26,7 @@ int Sugoroku::play()
     load_tokens();
     display_tokens();
     mainWindow->show();
+    mainWindow->setFixedSize( mainWindow->size() );
     std::srand( std::time(nullptr) );
     return exec();
 }
