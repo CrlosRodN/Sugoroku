@@ -45,17 +45,22 @@ bool Sugoroku::load_tokens()
 
 bool Sugoroku::display_tokens()
 {
-    for ( int i = 0; i < 4; i++ )
-    {
-        //mainWindow->layouts[2]->addWidget(this->WhitePlayer[i]->tile);
-        //mainWindow->layouts[3]->removeItem( mainWindow->layouts[3]->itemAt(i) );
-        WhitePlayer[i]->tile->setParent(mainWindow->whiteSpace[11] );
-        WhitePlayer[i]->tile->setGeometry ( 15, i*53, 50, 50 );
-        BlackPlayer[i]->tile->setParent(mainWindow->blackSpace[11] );
-        BlackPlayer[i]->tile->setGeometry ( 15, i*53, 50, 50 );
-        //mainWindow->layouts[3]->removeItem( dynamic_cast <QLayoutItem*>( WhitePlayer[i]->tile->parentWidget() ) );
-        //WhitePlayer[i]->tile->show();
-        //mainWindow->update();
-    }
+    int count = 0;
+    while ( count < 16 )
+        for ( int i = 0; i < 4; i++ )
+        {
+            WhitePlayer[count]->tile->setParent(mainWindow->whiteSpace[11] );
+            WhitePlayer[count]->tile->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
+            BlackPlayer[count]->tile->setParent(mainWindow->blackSpace[11] );
+            BlackPlayer[count]->tile->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
+            count++;
+        }
     return true;
 }
+
+/*lines thatcan be of some use*/
+//mainWindow->layouts[2]->addWidget(this->WhitePlayer[i]->tile);
+//mainWindow->layouts[3]->removeItem( mainWindow->layouts[3]->itemAt(i) );
+//mainWindow->layouts[3]->removeItem( dynamic_cast <QLayoutItem*>( WhitePlayer[i]->tile->parentWidget() ) );
+//WhitePlayer[i]->tile->show();
+//mainWindow->update();
