@@ -49,10 +49,10 @@ bool Sugoroku::display_tokens()
     while ( count < 16 )
         for ( int i = 0; i < 4; i++ )
         {
-            WhitePlayer[count]->tile->setParent(mainWindow->whiteSpace[11] );
-            WhitePlayer[count]->tile->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
-            BlackPlayer[count]->tile->setParent(mainWindow->blackSpace[11] );
-            BlackPlayer[count]->tile->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
+            WhitePlayer[count]->setParent(mainWindow->whiteSpace[11] );
+            WhitePlayer[count]->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
+            BlackPlayer[count]->setParent(mainWindow->blackSpace[11] );
+            BlackPlayer[count]->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
             count++;
         }
     return true;

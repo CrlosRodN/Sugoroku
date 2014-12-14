@@ -1,21 +1,21 @@
 #include "Token.h"
-#include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
 
-
-Token::Token( const char *svg )
-    :image( svg )
+Token::Token(const char *svg , QSvgWidget *parent)
+    : QSvgWidget( svg, parent )
 {
-    tile = new QSvgWidget( image );
+
 }
+
 
 Token::~Token()
 {
-    delete tile;
+
 }
 
-//void Token::mouseClickEvent(QGraphicsSceneMouseEvent* /*event*/)
-//{
-//    scene()->removeItem(this);
-//}
+#include <QDebug>
 
+void Token::mouseDoubleClickEvent( QMouseEvent* event )
+{
+    qDebug() << "DoubleClickEvent";
+    delete this;
+}

@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
     private:
         Ui::MainWindow *ui;
         Sugoroku* sugoroku;
-        QWidget * central;
+        QWidget* central;
 
 
     public:

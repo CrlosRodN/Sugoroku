@@ -3,18 +3,17 @@
 
 #include <QSvgWidget>
 
-class Token
+class Token : public QSvgWidget
 {
-    protected:
-        const char* image;
+    private:
+
 
     public:
-        explicit Token( const char* svg );
+        explicit Token( const char* svg, QSvgWidget *parent = 0);
+        ~Token();
 
-//        Token(const char* svg);
-       ~Token();
-
-        QSvgWidget *tile;
+    protected:
+        virtual void mouseDoubleClickEvent( QMouseEvent* event ) override;
 };
 
 #endif // TOKEN_H

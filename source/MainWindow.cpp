@@ -16,6 +16,7 @@ MainWindow::MainWindow( Sugoroku *sugoroku, QWidget *parent )
     load_layouts();
     central->setLayout( layouts[0] );
     central->show();
+    //this->show();
 }
 
 MainWindow::~MainWindow()
