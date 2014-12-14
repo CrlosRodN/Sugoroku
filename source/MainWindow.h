@@ -22,14 +22,15 @@ class MainWindow : public QMainWindow
     public:
         static const int N = 4;
         QLayout *layouts[N];
-        QVector<QSvgWidget*> blackSpace;
-        QVector<QSvgWidget*> whiteSpace;
-        explicit MainWindow( Sugoroku* sugogoku, QWidget *parent = 0 );
+        QSvgWidget* blackSpace = new QSvgWidget(":/gameIcons/table.svg");
+        QSvgWidget* whiteSpace = new QSvgWidget(":/gameIcons/table.svg");
+        QSvgWidget* centerSpace = new QSvgWidget(":/gameIcons/center.svg");
+        explicit MainWindow( Sugoroku* sugoroku, QWidget *parent = 0 );
         ~MainWindow();
 
     protected:
         void load_layouts();
-        void load_spaces();
+        //void load_spaces();
 
 
 };

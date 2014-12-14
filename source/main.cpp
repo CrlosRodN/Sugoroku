@@ -5,5 +5,5 @@
 int main( int argc, char *argv[] )
 {
     Sugoroku game( argc, argv );
-    return game.play();
+    return game.run();
 }

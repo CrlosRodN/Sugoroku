@@ -18,11 +18,13 @@ TEMPLATE = app
 SOURCES += source/main.cpp \
         source/MainWindow.cpp \
         source/Sugoroku.cpp \
-        source/Token.cpp
+        source/Token.cpp \
+    source/Dice.cpp
 
 HEADERS  += source/MainWindow.h \
         source/Sugoroku.h \
-        source/Token.h
+        source/Token.h \
+    source/Dice.h
 
 FORMS    += source/MainWindow.ui
 

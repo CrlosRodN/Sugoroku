@@ -18,5 +18,6 @@
         <file>board.svg</file>
         <file>center.svg</file>
         <file>square.svg</file>
+        <file>table.svg</file>
     </qresource>
 </RCC>

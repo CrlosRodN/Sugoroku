@@ -19,12 +19,13 @@ Sugoroku::~Sugoroku()
     }
 }
 
-int Sugoroku::play()
+int Sugoroku::run()
 {
     Q_ASSERT(mainWindow == nullptr);
     mainWindow = new MainWindow(this);
     load_tokens();
     display_tokens();
+    display_dices();
     mainWindow->show();
     mainWindow->setFixedSize( mainWindow->size() );
     std::srand( std::time(nullptr) );
@@ -49,18 +50,36 @@ bool Sugoroku::display_tokens()
     while ( count < 16 )
         for ( int i = 0; i < 4; i++ )
         {
-            WhitePlayer[count]->setParent(mainWindow->whiteSpace[11] );
-            WhitePlayer[count]->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
-            BlackPlayer[count]->setParent(mainWindow->blackSpace[11] );
-            BlackPlayer[count]->setGeometry ( 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
+            WhitePlayer[count]->setParent( mainWindow->whiteSpace );
+            WhitePlayer[count]->setGeometry ( ( 11 * 80 ) + 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
+            BlackPlayer[count]->setParent( mainWindow->blackSpace );
+            BlackPlayer[count]->setGeometry ( ( 11 * 80 ) + 20 + ( count/4 ) + ( count/4*2 ), 15 + ( i*47 ), 40, 40 );
             count++;
         }
     return true;
 }
 
-/*lines thatcan be of some use*/
-//mainWindow->layouts[2]->addWidget(this->WhitePlayer[i]->tile);
-//mainWindow->layouts[3]->removeItem( mainWindow->layouts[3]->itemAt(i) );
-//mainWindow->layouts[3]->removeItem( dynamic_cast <QLayoutItem*>( WhitePlayer[i]->tile->parentWidget() ) );
-//WhitePlayer[i]->tile->show();
-//mainWindow->update();
+#include <QDebug>
+
+void Sugoroku::search_active_tokens()
+{
+    for ( int i = 0; i < BlackPlayer.size(); i++ )
+        ! BlackPlayer[i]->active ? qDebug() << "token " << i << " is active" : qDebug() << "token " << i << " is inactive";
+}
+
+void Sugoroku::display_dices()
+{
+    QVBoxLayout* layout = new QVBoxLayout;
+    mainWindow->centerSpace->setLayout( layout );
+    DiceOne = new Dice();
+    DiceTwo = new Dice();
+    QString temp = ( "DICEONE" );
+    QString temp2 = ( "DICETWO" );
+    DiceOne->setText( temp );
+    DiceTwo->setText( temp2 );
+    layout->addWidget( DiceOne );
+    layout->addWidget( DiceTwo );
+    layout->setAlignment(Qt::AlignRight);
+    //diceOne->setParent( mainWindow->centerSpace );
+    //diceOne->show();
+}
