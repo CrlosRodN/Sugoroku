@@ -8,12 +8,12 @@
     </qresource>
     <qresource prefix="/gameIcons">
         <file>black.svg</file>
-        <file>five.svg</file>
-        <file>four.svg</file>
-        <file>one.svg</file>
-        <file>six.svg</file>
-        <file>three.svg</file>
-        <file>two.svg</file>
+        <file>dice-5.svg</file>
+        <file>dice-4.svg</file>
+        <file>dice-1.svg</file>
+        <file>dice-6.svg</file>
+        <file>dice-3.svg</file>
+        <file>dice-2.svg</file>
         <file>white.svg</file>
         <file>board.svg</file>
         <file>center.svg</file>

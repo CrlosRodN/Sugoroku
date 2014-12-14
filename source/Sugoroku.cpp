@@ -73,13 +73,7 @@ void Sugoroku::display_dices()
     mainWindow->centerSpace->setLayout( layout );
     DiceOne = new Dice();
     DiceTwo = new Dice();
-    QString temp = ( "DICEONE" );
-    QString temp2 = ( "DICETWO" );
-    DiceOne->setText( temp );
-    DiceTwo->setText( temp2 );
     layout->addWidget( DiceOne );
     layout->addWidget( DiceTwo );
-    layout->setAlignment(Qt::AlignRight);
-    //diceOne->setParent( mainWindow->centerSpace );
-    //diceOne->show();
+    layout->setAlignment(Qt::AlignCenter);
 }
