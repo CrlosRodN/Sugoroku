@@ -21,6 +21,9 @@ MainWindow::MainWindow( Sugoroku *sugoroku, QWidget *parent )
 
 MainWindow::~MainWindow()
 {
+    delete centerSpace;
+    delete whiteSpace;
+    delete blackSpace;
     delete ui;
 }
 
@@ -44,18 +47,7 @@ void MainWindow::load_layouts()
     layouts[0] = layout;
 }
 
-//void MainWindow::load_spaces()
-//{
-//    for ( int x = 0; x < 12; x++ )
-//    {
-//        whiteSpace.push_back( new QSvgWidget( ":/gameIcons/square.svg" ) );
-//        blackSpace.push_back( new QSvgWidget( ":/gameIcons/square.svg" ) );
-//    }
-//}
-
-
-
 void MainWindow::on_action_New_game_triggered()
 {
-
+    emit new_game();
 }

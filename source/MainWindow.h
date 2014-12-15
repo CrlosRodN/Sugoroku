@@ -28,12 +28,13 @@ class MainWindow : public QMainWindow
         explicit MainWindow( Sugoroku* sugoroku, QWidget *parent = 0 );
         ~MainWindow();
 
+    signals:
+        void new_game();
+
     protected:
         void load_layouts();
-        //void load_spaces();
 
-
-private slots:
+    private slots:
         void on_action_New_game_triggered();
 };
 

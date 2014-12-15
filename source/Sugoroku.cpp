@@ -11,7 +11,8 @@ Sugoroku::Sugoroku( int& argc, char* argv[] )
 
 Sugoroku::~Sugoroku()
 {
-    delete mainWindow;
+    delete DiceOne;
+    delete DiceTwo;
     for ( int i = 0; i < BlackPlayer.size(); ++i )
     {
         delete BlackPlayer[i];
@@ -23,7 +24,9 @@ int Sugoroku::run()
 {
     Q_ASSERT(mainWindow == nullptr);
     mainWindow = new MainWindow(this);
+    connect( mainWindow, SIGNAL( new_game() ), this, SLOT( new_game_selection() ) );
     load_tokens();
+    display_dices();
     play();
     mainWindow->show();
     mainWindow->setFixedSize( mainWindow->size() );
@@ -76,15 +79,79 @@ void Sugoroku::display_dices()
 void Sugoroku::play()
 {
     display_tokens();
-    display_dices();
-    DiceOne->roll();
-    DiceTwo->roll();
+    mainWindow->blackSpace->setEnabled( false );
+    next_turn();
 }
 
 void Sugoroku::token_clicked( Token* active )
 {
     int x = active->pos().rx();
     int y = active->pos().ry();
-    move_count == 0 ? active->move( x - DiceOne->real_value * 80, y ) : active->move( x - DiceTwo->real_value * 80, y );
+    int new_x = ( move_count == 0 ) ? x - DiceOne->real_value * 80 : x - DiceTwo->real_value * 80;
+    new_x = ( new_x < 0 ) ? ( 2 * 80 + new_x * -1 ) + ( new_x % 80 * 2): new_x;
+    active->move( new_x, y );
+    if ( new_x > 0 && new_x < 80 )
+        active->setEnabled( false );
+
+    if ( have_winner() )
+    {
+        play();
+        unlock_all();
+    }
+
     move_count++;
+    if ( move_count == 2)
+    {
+        move_count = 0;
+        next_turn();
+    }
+}
+
+void Sugoroku::next_turn()
+{
+    if ( mainWindow->whiteSpace->isEnabled() )
+    {
+        mainWindow->whiteSpace->setEnabled( false );
+        mainWindow->blackSpace->setEnabled( true );
+        currentPlayer = "black";
+    }
+    else
+    {
+        mainWindow->whiteSpace->setEnabled( true );
+        mainWindow->blackSpace->setEnabled( false );
+        currentPlayer = "white";
+    }
+    DiceOne->roll();
+    DiceTwo->roll();
+}
+
+bool Sugoroku::have_winner()
+{
+    if ( currentPlayer == "white" )
+        for ( int i = 0; i < WhitePlayer.size(); i++ )
+            if ( WhitePlayer[i]->pos().rx() > 80 )
+                return false;
+
+    if ( currentPlayer == "black" )
+        for ( int i = 0; i < BlackPlayer.size(); i++ )
+            if ( BlackPlayer[i]->pos().rx() > 80 )
+                return false;
+
+    qDebug() << currentPlayer;
+    return true;
+}
+
+void Sugoroku::unlock_all()
+{
+    for ( int i = 0; i < BlackPlayer.size(); i++ )
+    {
+        BlackPlayer[i]->setEnabled( true );
+        WhitePlayer[i]->setEnabled( true );
+    }
+}
+
+void Sugoroku::new_game_selection()
+{
+    unlock_all();
+    play();
 }

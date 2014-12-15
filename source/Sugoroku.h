@@ -22,6 +22,7 @@ class Sugoroku : public QApplication
         QVector<Token*> WhitePlayer;
         Dice* DiceOne;
         Dice* DiceTwo;
+        QString currentPlayer;
 
     public:
         Sugoroku(int &argc, char *argv[]);
@@ -33,9 +34,13 @@ class Sugoroku : public QApplication
         void search_active_tokens();
         void display_dices();
         void play();
+        void next_turn();
+        bool have_winner();
+        void unlock_all();
 
     public slots:
         void token_clicked( Token *active );
+        void new_game_selection();
 };
 
 #endif // SUGOROKU_H

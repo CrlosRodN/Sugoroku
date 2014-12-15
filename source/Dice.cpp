@@ -10,7 +10,8 @@ Dice::Dice( QWidget * parent )
 
 Dice::~Dice()
 {
-
+    delete reader;
+    delete timer;
 }
 
 void Dice::charge_faces()
@@ -32,6 +33,7 @@ void Dice::charge_faces()
 void Dice::roll()
 {
     shuffle();
+    it = dice_faces.begin();
     connect( timer, SIGNAL( timeout() ), this, SLOT( test() ) );
     timer->start( 90 );
 }
@@ -48,7 +50,6 @@ void Dice::test( )
     {
         --it;
         real_value = (*it).at(17).digitValue();
-        qDebug() << real_value;
         timer->stop();
     }
 }
