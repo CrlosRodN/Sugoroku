@@ -20,15 +20,18 @@ SOURCES += source/main.cpp \
         source/Sugoroku.cpp \
         source/Token.cpp \
     source/Dice.cpp \
-    source/dialog.cpp
+    source/HelpDialog.cpp \
+    source/AboutDialog.cpp
 
 HEADERS  += source/MainWindow.h \
         source/Sugoroku.h \
         source/Token.h \
     source/Dice.h \
-    source/dialog.h
+    source/AboutDialog.h \
+    source/HelpDialog.h
 
 FORMS    += source/MainWindow.ui \
-    source/dialog.ui
+    source/AboutDialog.ui \
+    source/HelpDialog.ui
 
 RESOURCES += assets/assets.qrc

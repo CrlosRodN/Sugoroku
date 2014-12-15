@@ -36,6 +36,7 @@ class MainWindow : public QMainWindow
 
   protected slots:
 	void showAboutMessage();
+	void showHelpMessage();
 
     private slots:
         void on_action_New_game_triggered();

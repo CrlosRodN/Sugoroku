@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include "dialog.h"
+#include "AboutDialog.h"
+#include "HelpDialog.h"
 #include <QLayout>
 #include <QSvgWidget>
 #include <vector>
@@ -20,6 +21,7 @@ MainWindow::MainWindow( Sugoroku *sugoroku, QWidget *parent )
     //this->show();
 
 	connect(ui->action_About, SIGNAL(triggered()), this, SLOT(showAboutMessage()));
+	connect(ui->action_Instructions, SIGNAL(triggered()), this, SLOT(showHelpMessage()));
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +56,12 @@ void MainWindow::showAboutMessage()
 {
 	AboutDialog* about = new AboutDialog	(this);
 	about->exec();
+}
+
+void MainWindow::showHelpMessage()
+{
+	HelpDialog* help = new HelpDialog	(this);
+	help->exec();
 }
 
 void MainWindow::on_action_New_game_triggered()
