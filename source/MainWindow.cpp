@@ -13,13 +13,10 @@ MainWindow::MainWindow( Sugoroku *sugoroku, QWidget *parent )
 {
     ui->setupUi( this );
     central = new QWidget( this );
-    setCentralWidget( central );
-    //load_spaces();
+	setCentralWidget( central );
     load_layouts();
     central->setLayout( layouts[0] );
-    central->show();
-    //this->show();
-
+	central->show();
 	connect(ui->action_About, SIGNAL(triggered()), this, SLOT(showAboutMessage()));
 	connect(ui->action_Instructions, SIGNAL(triggered()), this, SLOT(showHelpMessage()));
 }
