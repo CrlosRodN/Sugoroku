@@ -34,6 +34,9 @@ class MainWindow : public QMainWindow
     protected:
         void load_layouts();
 
+  protected slots:
+	void showAboutMessage();
+
     private slots:
         void on_action_New_game_triggered();
 };

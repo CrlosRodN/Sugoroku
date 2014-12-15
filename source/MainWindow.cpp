@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "dialog.h"
 #include <QLayout>
 #include <QSvgWidget>
 #include <vector>
@@ -17,6 +18,8 @@ MainWindow::MainWindow( Sugoroku *sugoroku, QWidget *parent )
     central->setLayout( layouts[0] );
     central->show();
     //this->show();
+
+	connect(ui->action_About, SIGNAL(triggered()), this, SLOT(showAboutMessage()));
 }
 
 MainWindow::~MainWindow()
@@ -45,6 +48,12 @@ void MainWindow::load_layouts()
             layouts[i]->addWidget( centerSpace );
     }
     layouts[0] = layout;
+}
+
+void MainWindow::showAboutMessage()
+{
+	AboutDialog* about = new AboutDialog	(this);
+	about->exec();
 }
 
 void MainWindow::on_action_New_game_triggered()
