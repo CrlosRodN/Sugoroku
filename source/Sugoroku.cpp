@@ -11,7 +11,6 @@ Sugoroku::Sugoroku( int& argc, char* argv[] )
 
 Sugoroku::~Sugoroku()
 {
-    delete mainWindow;
     for ( int i = 0; i < BlackPlayer.size(); ++i )
     {
         delete BlackPlayer[i];
