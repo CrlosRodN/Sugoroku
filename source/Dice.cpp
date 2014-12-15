@@ -1,5 +1,6 @@
 
 #include "Dice.h"
+#include <QDebug>
 
 Dice::Dice( QWidget * parent )
     : QLabel( parent )
@@ -15,19 +16,25 @@ Dice::~Dice()
 void Dice::charge_faces()
 {
     for ( int i = 0; i < 6; i++ )
+    {
         this->dice_faces.push_back( QString( ":/gameIcons/dice-%1.svg" ).arg( i + 1 ) );
+        this->dice_faces.push_back( QString( ":/gameIcons/dice-%1.svg" ).arg( i + 1 ) );
+    }
 
     it = dice_faces.begin();
-    shuffle();
-    reader = new QImageReader( dice_faces[3] );
+    reader = new QImageReader( dice_faces[1] );
     reader->setScaledSize( QSize( 60, 60 ) );
     this->setPixmap( QPixmap::fromImage( reader->read() ) );
     timer = new QTimer( this );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( test() ) );
-    timer->start( 80 );
+
 }
 
-#include <QDebug>
+void Dice::roll()
+{
+    shuffle();
+    connect( timer, SIGNAL( timeout() ), this, SLOT( test() ) );
+    timer->start( 90 );
+}
 
 void Dice::test( )
 {
@@ -39,6 +46,9 @@ void Dice::test( )
     }
     else
     {
+        --it;
+        real_value = (*it).at(17).digitValue();
+        qDebug() << real_value;
         timer->stop();
     }
 }

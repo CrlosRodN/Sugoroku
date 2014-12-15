@@ -5,6 +5,8 @@
 
 class Token : public QSvgWidget
 {
+    Q_OBJECT
+
     private:
 
 
@@ -12,7 +14,8 @@ class Token : public QSvgWidget
         explicit Token( const char* svg, QSvgWidget *parent = 0);
         ~Token();
 
-        bool active;
+    signals:
+        void clicked( Token* );
 
     protected:
         virtual void mouseDoubleClickEvent( QMouseEvent* ) override;

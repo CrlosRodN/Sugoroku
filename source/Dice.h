@@ -23,7 +23,7 @@ class Dice : public QLabel
         virtual ~Dice();
         QImageReader* reader;
 
-        int value;
+        int real_value;
         void charge_faces();
         void roll();
         void shuffle();

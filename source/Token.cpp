@@ -2,7 +2,6 @@
 
 Token::Token(const char *svg , QSvgWidget *parent)
     : QSvgWidget( svg, parent )
-    , active( false )
 {
 
 }
@@ -17,7 +16,8 @@ Token::~Token()
 
 void Token::mouseDoubleClickEvent( QMouseEvent* )
 {
-    active = true;
+     emit clicked( this );
+
     //this->setGeometry( 80 + 20 + ( 1/4 ) + ( 1/4*2 ), 15 + ( 0*47 ), 40, 40 );
     //this->move( 500, 0 );
 }

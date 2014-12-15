@@ -33,6 +33,8 @@ class MainWindow : public QMainWindow
         //void load_spaces();
 
 
+private slots:
+        void on_action_New_game_triggered();
 };
 
 #endif // MAINWINDOW_H

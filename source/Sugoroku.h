@@ -8,9 +8,14 @@
 
 class MainWindow;
 
-class Sugoroku : public virtual QApplication
-
+class Sugoroku : public QApplication
 {
+
+    Q_OBJECT
+
+    private:
+        int move_count = 0;
+
     protected:
         MainWindow* mainWindow;
         QVector<Token*> BlackPlayer;
@@ -27,6 +32,10 @@ class Sugoroku : public virtual QApplication
         bool display_tokens();
         void search_active_tokens();
         void display_dices();
+        void play();
+
+    public slots:
+        void token_clicked( Token *active );
 };
 
 #endif // SUGOROKU_H

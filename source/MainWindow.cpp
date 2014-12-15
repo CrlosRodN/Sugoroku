@@ -54,3 +54,8 @@ void MainWindow::load_layouts()
 //}
 
 
+
+void MainWindow::on_action_New_game_triggered()
+{
+
+}

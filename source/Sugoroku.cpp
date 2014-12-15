@@ -24,8 +24,7 @@ int Sugoroku::run()
     Q_ASSERT(mainWindow == nullptr);
     mainWindow = new MainWindow(this);
     load_tokens();
-    display_tokens();
-    display_dices();
+    play();
     mainWindow->show();
     mainWindow->setFixedSize( mainWindow->size() );
     std::srand( std::time(nullptr) );
@@ -37,7 +36,9 @@ bool Sugoroku::load_tokens()
     for ( int i = 0; i < 16; i++ )
     {
         Token* whiteToken = new Token(":/gameIcons/white.svg");
+        connect( whiteToken, SIGNAL( clicked( Token* ) ), this, SLOT( token_clicked( Token* ) ) );
         Token* blackToken = new Token(":/gameIcons/black.svg");
+        connect( blackToken, SIGNAL( clicked( Token* ) ), this, SLOT( token_clicked( Token* ) ) );
         this->WhitePlayer.push_back( whiteToken );
         this->BlackPlayer.push_back( blackToken );
     }
@@ -61,12 +62,6 @@ bool Sugoroku::display_tokens()
 
 #include <QDebug>
 
-void Sugoroku::search_active_tokens()
-{
-    for ( int i = 0; i < BlackPlayer.size(); i++ )
-        ! BlackPlayer[i]->active ? qDebug() << "token " << i << " is active" : qDebug() << "token " << i << " is inactive";
-}
-
 void Sugoroku::display_dices()
 {
     QVBoxLayout* layout = new QVBoxLayout;
@@ -76,4 +71,20 @@ void Sugoroku::display_dices()
     layout->addWidget( DiceOne );
     layout->addWidget( DiceTwo );
     layout->setAlignment(Qt::AlignCenter);
+}
+
+void Sugoroku::play()
+{
+    display_tokens();
+    display_dices();
+    DiceOne->roll();
+    DiceTwo->roll();
+}
+
+void Sugoroku::token_clicked( Token* active )
+{
+    int x = active->pos().rx();
+    int y = active->pos().ry();
+    move_count == 0 ? active->move( x - DiceOne->real_value * 80, y ) : active->move( x - DiceTwo->real_value * 80, y );
+    move_count++;
 }
